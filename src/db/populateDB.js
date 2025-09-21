@@ -63,8 +63,7 @@ async function main() {
   console.log("seeding...");
   const connectionString =
     process.argv[2] ||
-    process.env.DATABASE_URL ||
-    "postgres://myuser:booksuser@localhost:5432/books";
+    process.env.DATABASE_URL;
 
   const client = new Client({ connectionString });
   await client.connect();
