@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%=title%></title>
+</head>
+<body>
+  <h1><%=title%></h1>
+  <ul>
+    <% genres.forEach(genre=>{ %>
+      <li>
+        <a href="/genres/<%=genre.name %>"><%=genre.name%></a>
+      </li>
+    <%})%>
+  </ul>
+  <p><a href="/">back to books list</a></p>
+</body>
+</html>
