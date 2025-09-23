@@ -2,7 +2,7 @@ import {getBooks, getGenres, createBook, deleteBook, updateBook, getAuthors, get
 
 export const listBooks = async(req, res)=>{
     const books =  await getBooks();
-    res.render("booksList", {title : "list of books", books});
+    res.render("booksList", {title : "List of books", books});
 };
 
 export const addBookGet = async (req, res) => {

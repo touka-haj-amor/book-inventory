@@ -135,3 +135,24 @@ export async function getOrCreateAuthorId(authorName) {
     }
     return result.rows[0].id;
 }
+
+export async function getBooksByAuthor(name) {
+    const query = `
+        SELECT 
+            b.id,
+            b.title,
+            b.description,
+            a.name AS author,
+            g.name AS genre
+        FROM book b
+        LEFT JOIN book_author ba ON b.id = ba.bookid
+        LEFT JOIN author a ON ba.authorid = a.id
+        LEFT JOIN book_genre bg ON b.id = bg.bookid
+        LEFT JOIN genre g ON bg.genreid = g.id
+        WHERE a.name = $1
+        ORDER BY b.id
+    `;
+
+    const result = await pool.query(query, [name]);
+    return result.rows;
+}

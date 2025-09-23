@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title><%=title%></title>
+  <link href="/layout.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/icon.png">
+</head>
 </head>
 <body>
+  <%- include('partials/navbar') %>
+
+  <main class="container">
   <h1><%=title%></h1>
-  <ul>
+  <ul class="genres-list">
     <% genres.forEach(genre=>{ %>
       <li>
         <a href="/genres/<%=genre.name %>"><%=genre.name%></a>
@@ -14,5 +20,8 @@
     <%})%>
   </ul>
   <p><a href="/">back to books list</a></p>
+  </main>
+  
+  <%- include('partials/footer') %>
 </body>
 </html>

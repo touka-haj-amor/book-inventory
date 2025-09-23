@@ -3,27 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Book</title>
+    <link href="/layout.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/icon.png">
 </head>
 <body>
+  <%- include('partials/navbar') %>
+
+  <main class="update-form">
     <h1>Update Book</h1>
     <form action="/update/<%= book.id %>" method="POST">
-        <label>Title:</label>
-        <input type="text" name="title" value="<%= book.title %>" required><br><br>
-        <label>Author:</label>
-        <input type="text" name="author" value="<%= book.author %>" required><br><br>
-        <label>Genre:</label>
-        <select name="genreId" required>
+       <div class="box">
+            <label>Title:</label>
+            <input type="text" name="title" value="<%= book.title %>" required>
+       </div>
+        <div class="box">
+            <label>Author:</label>
+            <input type="text" name="author" value="<%= book.author %>" required>
+        </div>
+        <div class="box">
+            <label>Genre:</label>
+            <select name="genreId" required>
             <% genres.forEach(genre => { %>
                 <option value="<%= genre.id %>" <%= genre.id === book.genreId ? "selected" : "" %> >
                     <%= genre.name %>
                 </option>
             <% }) %>
-        </select><br><br>
-        <label>Description:</label>
-        <textarea name="description"><%= book.description %></textarea><br><br>
-        <button type="submit">Update Book</button>
+            </select>
+        </div>
+        <div class="box">
+            <label>Description:</label>
+            <textarea name="description"><%= book.description %></textarea><br><br>
+        </div>
+        <div class="update-Btn">
+            <button type="submit">Update Book</button>
+        </div>
     </form>
-
-    <p><a href="/">Back to books list</a></p>
+    </main>
+    <%- include('partials/footer') %>
 </body>
 </html>
